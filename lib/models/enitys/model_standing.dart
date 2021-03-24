@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:soccer_app/models/enitys/model_team_standing.dart';
 part 'model_standing.g.dart';
 
 @JsonSerializable()
 class StandingModel{
-  int ?id;
-  String ?name;
-  String ?crestUrl;
+  int ?position;
+  TeamStandingModel ?team;
   int ?playedGames;
   String ?form;
   int ?won;

@@ -12,14 +12,14 @@ SoccerModel _$SoccerModelFromJson(Map<String, dynamic> json) {
         ? null
         : PlayerModel.fromJson(json['playerModel'] as Map<String, dynamic>)
     ..numberOfGoals = json['numberOfGoals'] as int?
-    ..teamModel = json['teamModel'] == null
+    ..team = json['team'] == null
         ? null
-        : TeamModel.fromJson(json['teamModel'] as Map<String, dynamic>);
+        : TeamSoccerModel.fromJson(json['team'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$SoccerModelToJson(SoccerModel instance) =>
     <String, dynamic>{
       'playerModel': instance.playerModel,
       'numberOfGoals': instance.numberOfGoals,
-      'teamModel': instance.teamModel,
+      'team': instance.team,
     };

@@ -8,9 +8,10 @@ part of 'model_standing.dart';
 
 StandingModel _$StandingModelFromJson(Map<String, dynamic> json) {
   return StandingModel()
-    ..id = json['id'] as int?
-    ..name = json['name'] as String?
-    ..crestUrl = json['crestUrl'] as String?
+    ..position = json['position'] as int?
+    ..team = json['team'] == null
+        ? null
+        : TeamStandingModel.fromJson(json['team'] as Map<String, dynamic>)
     ..playedGames = json['playedGames'] as int?
     ..form = json['form'] as String?
     ..won = json['won'] as int?
@@ -24,9 +25,8 @@ StandingModel _$StandingModelFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$StandingModelToJson(StandingModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'crestUrl': instance.crestUrl,
+      'position': instance.position,
+      'team': instance.team,
       'playedGames': instance.playedGames,
       'form': instance.form,
       'won': instance.won,
