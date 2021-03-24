@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:soccer_app/providers/page_notifier.dart';
 import 'package:soccer_app/providers/soccer_notifier.dart';
 
 final soccer_notifer=StateNotifierProvider<SoccerNotifier>((ref)=>SoccerNotifier());
-final select_page=ChangeNotifierProvider<PageNotifier>((ref)=>PageNotifier());
 
 class SoccerTab extends ConsumerWidget {
   String ?code;
