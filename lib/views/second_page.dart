@@ -1,8 +1,12 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:soccer_app/public/custom_curved_bottom_navigation.dart';
+import 'package:soccer_app/views/soccer_page.dart';
+import 'package:soccer_app/views/standing_page.dart';
 class SecondPage extends StatelessWidget {
   String ?code;
   SecondPage({this.code});
+  int select_page=0;
+  final _pageOptions=[StandingTab(),SoccerTab()];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,16 +15,12 @@ class SecondPage extends StatelessWidget {
         extendBody: true,
         bottomNavigationBar: CurvedNavigationBar(
           items: [
-            Icon(Icons.account_balance_wallet_rounded),
+            Icon(Icons.lock),
             Icon(Icons.person),
           ],
+          onTap: (index){},
         ),
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          padding: EdgeInsets.all(8.0),
-
-        ),
+        body: _pageOptions[select_page],
       ),
     );
   }
