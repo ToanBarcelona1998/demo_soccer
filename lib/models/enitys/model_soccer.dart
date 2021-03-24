@@ -5,7 +5,7 @@ part 'model_soccer.g.dart';
 
 @JsonSerializable()
 class SoccerModel{
-  PlayerModel ?playerModel;
+  PlayerModel ?player;
   int? numberOfGoals;
   TeamSoccerModel ?team;
 

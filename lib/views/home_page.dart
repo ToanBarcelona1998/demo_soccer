@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     _list.add(TournamentModel(code: "BL1",image: "assets/images/bundesliga.png"));
     _list.add(TournamentModel(code: "SA",image: "assets/images/seria.png"));
     _list.add(TournamentModel(code: "FL1",image: "assets/images/ligue1.png"));
-    _list.add(TournamentModel(code: "PD",image: "assets/images/nos.png"));
+    _list.add(TournamentModel(code: "PPL",image: "assets/images/nos.png"));
     super.initState();
   }
   @override
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
               child: Text(
                 "Select Tournaments",
-                style: TextStyle(fontSize: 22, color: Colors.white),
+                  style: TextStyle(fontSize: 22,fontFamily: "Chango",color: Colors.white),
               ),
             ),
           ),

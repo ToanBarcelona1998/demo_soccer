@@ -10,13 +10,11 @@ final select_page=ChangeNotifierProvider<PageNotifier>((ref)=>PageNotifier());
 class SecondPage extends ConsumerWidget{
   String ?code;
   SecondPage({this.code});
-  final _pageOptions=[StandingTab(),SoccerTab()];
   @override
   Widget build(BuildContext context, watch) {
+    final _pageOptions=[StandingTab(code: code,),SoccerTab(code: code,)];
     final page=watch(select_page);
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+      return Scaffold(
           extendBody: true,
           bottomNavigationBar: CurvedNavigationBar(
             items: [
@@ -28,7 +26,6 @@ class SecondPage extends ConsumerWidget{
             },
           ),
           body: _pageOptions[page.selectPage],
-        ),
       );
   }
   

@@ -8,9 +8,9 @@ part of 'model_soccer.dart';
 
 SoccerModel _$SoccerModelFromJson(Map<String, dynamic> json) {
   return SoccerModel()
-    ..playerModel = json['playerModel'] == null
+    ..player = json['player'] == null
         ? null
-        : PlayerModel.fromJson(json['playerModel'] as Map<String, dynamic>)
+        : PlayerModel.fromJson(json['player'] as Map<String, dynamic>)
     ..numberOfGoals = json['numberOfGoals'] as int?
     ..team = json['team'] == null
         ? null
@@ -19,7 +19,7 @@ SoccerModel _$SoccerModelFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SoccerModelToJson(SoccerModel instance) =>
     <String, dynamic>{
-      'playerModel': instance.playerModel,
+      'player': instance.player,
       'numberOfGoals': instance.numberOfGoals,
       'team': instance.team,
     };

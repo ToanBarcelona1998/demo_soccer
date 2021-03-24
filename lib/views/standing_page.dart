@@ -7,10 +7,11 @@ final standing_notifier =
     ChangeNotifierProvider<StandingNotifier>((ref) => StandingNotifier());
 
 class StandingTab extends StatelessWidget {
+  String ?code;
+  StandingTab({this.code});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Container(
         color: Color(0xffe0e1db),
         padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top,
@@ -24,11 +25,15 @@ class StandingTab extends StatelessWidget {
             Container(
               child: Stack(
                 children: [
-                  Icon(Icons.keyboard_backspace_sharp),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.keyboard_backspace_sharp),),
                   Container(
                     alignment: Alignment.center,
                     width: double.infinity,
-                    child: Text("Standing"),
+                    child: Text("Standing",style: TextStyle(fontSize: 22,fontFamily: "Chango"),),
                   )
                 ],
               ),
@@ -49,20 +54,21 @@ class StandingTab extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: TablePage(),
+              child: TableStanding(code: code,),
             ),
           ],
         ),
-      ),
     );
   }
 }
 
-class TablePage extends ConsumerWidget {
+class TableStanding extends ConsumerWidget {
+  String ?code;
+  TableStanding({this.code});
   @override
   Widget build(BuildContext context, watch) {
     final standing_data = watch(standing_notifier);
-    context.read(standing_notifier).fetchDataStanding("SA");
+    context.read(standing_notifier).fetchDataStanding(code!);
     return standing_data.list.length != 0
     ? Container(
         child: ListView.builder(

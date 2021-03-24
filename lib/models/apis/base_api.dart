@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:http/http.dart' as http;
 abstract class BaseApi{
   String _domain="https://api.football-data.org//v2/";
@@ -9,7 +11,11 @@ abstract class BaseApi{
   param();
   getResponse() async{
     String url=_domain+action()+_slash+tournameny()+_slash+param();
-    http.Response response=await http.get(Uri.parse(url),headers: {_auth_token : _my_token});
+    http.Response response=await http.get(Uri.parse(url),headers: {_auth_token : _my_token})
+    .timeout(Duration(seconds: 15),
+    onTimeout: (){
+      throw TimeoutException("Time out");
+    });
     return response;
   }
 }
