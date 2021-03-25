@@ -10,9 +10,13 @@ final select_page=ChangeNotifierProvider<PageNotifier>((ref)=>PageNotifier());
 class SecondPage extends ConsumerWidget{
   String ?code;
   SecondPage({this.code});
+  final _pageOptions=[StandingTab(),SoccerTab()];
   @override
   Widget build(BuildContext context, watch) {
-    final _pageOptions=[StandingTab(code: code,),SoccerTab(code: code,)];
+    context.read(standing_notifier).list.clear();
+    context.read(soccer_notifer).state.clear();
+    Future.delayed(Duration(seconds: 3),(){context.read(standing_notifier).fetchDataStanding(code!);});
+    Future.delayed(Duration(seconds: 3),(){context.read(soccer_notifer).getSoccerNotifier(code!);});
     final page=watch(select_page);
       return Scaffold(
           extendBody: true,

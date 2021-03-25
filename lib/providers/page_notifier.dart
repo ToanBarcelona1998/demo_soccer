@@ -4,7 +4,6 @@ class PageNotifier extends ChangeNotifier{
   PageNotifier([this._selectPage=0]);
 
   get selectPage=>this._selectPage;
-
   changePage(int index){
     _selectPage=index;
     notifyListeners();

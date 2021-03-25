@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soccer_app/providers/soccer_notifier.dart';
 
-final soccer_notifer=StateNotifierProvider<SoccerNotifier>((ref)=>SoccerNotifier());
+final soccer_notifer =
+    StateNotifierProvider<SoccerNotifier>((ref) => SoccerNotifier());
 
-class SoccerTab extends ConsumerWidget {
-  String ?code;
-  SoccerTab({this.code});
+class SoccerTab extends StatelessWidget {
   @override
-  Widget build(BuildContext context, watch) {
+  Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffe0e1db),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xfff0ebe8), Color(0xffeaeaec)],
+      )),
       padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top,
           left: 8,
@@ -24,14 +28,18 @@ class SoccerTab extends ConsumerWidget {
             child: Stack(
               children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Icon(Icons.keyboard_backspace_sharp),),
+                  child: Icon(Icons.keyboard_backspace_sharp),
+                ),
                 Container(
                   alignment: Alignment.center,
                   width: double.infinity,
-                  child: Text("Top Soccer",style: TextStyle(fontSize: 22,fontFamily: "Chango"),),
+                  child: Text(
+                    "Top Soccer",
+                    style: TextStyle(fontSize: 22, fontFamily: "Chango"),
+                  ),
                 )
               ],
             ),
@@ -41,86 +49,124 @@ class SoccerTab extends ConsumerWidget {
           ),
           Row(
             children: [
-              Expanded(flex: 4,child: Container(child: Text("Name"),),),
-              Expanded(flex: 2,child: Container(child: Text("Bir"),),),
-              Expanded(child: Container(child: Text("Pos"),),),
-              Expanded(child: Container(child: Text("Club"),),),
-              Expanded(child: Container(child: Text("Goal"),),),
+              Expanded(
+                flex: 4,
+                child: Container(),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(),
+              ),
+              Expanded(
+                child: Container(
+                  child: Opacity(opacity: 0.5,child: Text("Pos",style: TextStyle(fontWeight: FontWeight.bold),),),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: Opacity(
+                    opacity: 0.5,
+                      child: Text("Club",style: TextStyle(fontWeight: FontWeight.bold),),),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: Opacity(
+                    opacity: 0.5,
+                    child: Text("Goal",style: TextStyle(fontWeight: FontWeight.bold),),),
+                ),
+              ),
             ],
           ),
           Expanded(
-            child: TableSoccer(code: code,),
+            child: TableSoccer(),
           ),
         ],
       ),
     );
   }
-
 }
-class TableSoccer extends ConsumerWidget{
-  String ?code;
-  TableSoccer({this.code});
+
+class TableSoccer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, watch) {
-    context.read(soccer_notifer).getSoccerNotifier(code);
-    final soccer=watch(soccer_notifer.state);
-    return soccer.length!=0?Container(
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: soccer.length,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.only(top: 12, bottom: 12),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 4,
-                child: Container(
-                  child: Text(
-                    soccer[index].player!.name.toString(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+    final soccer = watch(soccer_notifer.state);
+    return soccer.length != 0
+        ? Container(
+            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: soccer.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(top: 12, bottom: 12),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            child: Text(
+                              soccer[index].player!.name.toString(),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            child: Opacity(
+                              opacity: 0.5,
+                              child: Text(
+                                soccer[index].player!.dateOfBirth.toString(),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: Opacity(
+                              opacity: 0.3,
+                              child: Text(
+                                soccer[index].player!.position.toString(),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: Opacity(
+                              opacity: 0.3,
+                              child: Text(
+                                soccer[index].team!.name.toString(),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: Text(
+                              soccer[index].numberOfGoals.toString(),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.grey,
+                    )
+                  ],
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  child: Text(
-                    soccer[index].player!.dateOfBirth.toString(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    soccer[index].player!.position.toString(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    soccer[index].team!.name.toString(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Text(
-                    soccer[index].numberOfGoals.toString(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ):Center(
-      child: CircularProgressIndicator(),
-    );
+            ),
+          )
+        : Center(
+            child: CircularProgressIndicator(),
+          );
   }
-
 }

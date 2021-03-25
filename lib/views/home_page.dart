@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soccer_app/models/enitys/model_tournament.dart';
-import 'package:soccer_app/models/services/soccer_service.dart';
-import 'package:soccer_app/models/services/standing_service.dart';
+import 'package:soccer_app/providers/standing_notifier.dart';
 import 'package:soccer_app/views/second_page.dart';
 class HomePage extends StatefulWidget {
   @override

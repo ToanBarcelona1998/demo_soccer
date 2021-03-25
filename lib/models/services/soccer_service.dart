@@ -4,6 +4,11 @@ import 'package:http/http.dart' as http;
 import 'package:soccer_app/models/apis/base_api.dart';
 import 'package:soccer_app/models/apis/scorer_api.dart';
 import 'package:soccer_app/models/enitys/model_soccer.dart';
+import 'package:soccer_app/public/shared/result_fail.dart';
+import 'package:soccer_app/public/shared/result_fail_code_400.dart';
+import 'package:soccer_app/public/shared/result_fail_code_403.dart';
+import 'package:soccer_app/public/shared/result_fail_code_404.dart';
+import 'package:soccer_app/public/shared/result_fail_code_429.dart';
 
 class SoccerService{
   BaseApi ?_baseApi;
@@ -22,14 +27,16 @@ class SoccerService{
         });
         return _listSoccer;
       }else if(stCode==400){
-        return "Lỗi 400";
+        throw ResultFailCode400();
       }else if(stCode==403){
-        return "Lỗi 403";
-      }else{
-        return "Không biết lỗi";
+        throw ResultFailCode403();
+      }else if(stCode==404){
+        throw ResultFailCode404();
+      }else if(stCode==429){
+        throw ResultFailCode429();
       }
     }catch(e){
-      throw Exception(e.toString());
+      throw ResultFail();
     }
   }
 }
