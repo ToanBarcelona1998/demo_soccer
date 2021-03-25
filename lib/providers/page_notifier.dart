@@ -1,11 +1,14 @@
-import 'package:flutter/cupertino.dart';
-class PageNotifier extends ChangeNotifier{
-  int ?_selectPage;
-  PageNotifier([this._selectPage=0]);
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+class PageNotifier extends StateNotifier<int>{
+  PageNotifier() : super(0);
 
-  get selectPage=>this._selectPage;
+
   changePage(int index){
-    _selectPage=index;
-    notifyListeners();
+    state=index;
+  }
+  @override
+  set state(int value) {
+    // TODO: implement state
+    super.state = value;
   }
 }
