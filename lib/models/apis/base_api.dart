@@ -13,7 +13,8 @@ abstract class BaseApi{
     String url=_domain+action()+_slash+tournameny()+_slash+param();
     http.Response response=await http.get(Uri.parse(url),headers: {_auth_token : _my_token})
     .timeout(Duration(seconds: 15),
-    onTimeout: (){
+    onTimeout: ()async{
+      await http.Client()..close();
       throw TimeoutException("Time out");
     });
     return response;

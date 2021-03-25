@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:soccer_app/providers/standing_notifier.dart';
 
 final standing_notifier =
@@ -11,12 +12,11 @@ class StandingTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xfff0ebe8),Color(0xffeaeaec)],
-        )
-      ),
+          gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xfff0ebe8), Color(0xffeaeaec)],
+      )),
       padding: EdgeInsets.only(
           top: MediaQuery.of(context).padding.top,
           left: 8,
@@ -52,54 +52,75 @@ class StandingTab extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Container(
-                ),
+                child: Container(),
               ),
+              Container(
+                height: MediaQuery.of(context).size.height / 12,
+                width: MediaQuery.of(context).size.width / 7,
+              ),
+              SizedBox(width: 6,),
               Expanded(
                 flex: 4,
+                child: Container(),
+              ),
+              Expanded(
                 child: Container(
+                  child: Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "Pl",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                 ),
               ),
               Expanded(
                 child: Container(
                   child: Opacity(
-                    opacity: 0.5,
-                      child: Text("Pl",style: TextStyle(fontWeight: FontWeight.bold),)),
+                      opacity: 0.5,
+                      child: Text(
+                        "W",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                 ),
               ),
               Expanded(
                 child: Container(
                   child: Opacity(
-                    opacity: 0.5,
-                      child: Text("W",style: TextStyle(fontWeight: FontWeight.bold),)),
+                      opacity: 0.5,
+                      child: Text(
+                        "D",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                 ),
               ),
               Expanded(
                 child: Container(
                   child: Opacity(
-                    opacity: 0.5,
-                      child: Text("D",style: TextStyle(fontWeight: FontWeight.bold),)),
+                      opacity: 0.5,
+                      child: Text(
+                        "L",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                 ),
               ),
               Expanded(
                 child: Container(
                   child: Opacity(
-                    opacity: 0.5,
-                      child: Text("L",style: TextStyle(fontWeight: FontWeight.bold),)),
+                      opacity: 0.5,
+                      child: Text(
+                        "Gd",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                 ),
               ),
               Expanded(
                 child: Container(
                   child: Opacity(
-                    opacity: 0.5,
-                      child: Text("Gd",style: TextStyle(fontWeight: FontWeight.bold),)),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  child: Opacity(
-                    opacity: 0.5,
-                      child: Text("Pts",style: TextStyle(fontWeight: FontWeight.bold),)),
+                      opacity: 0.5,
+                      child: Text(
+                        "Pts",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
                 ),
               ),
             ],
@@ -114,7 +135,6 @@ class StandingTab extends StatelessWidget {
 }
 
 class TableStanding extends ConsumerWidget {
-
   @override
   Widget build(BuildContext context, watch) {
     final standing_data = watch(standing_notifier);
@@ -125,98 +145,115 @@ class TableStanding extends ConsumerWidget {
               itemCount: standing_data.list.length,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.only(top: 12, bottom: 12),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            child: Text(
-                              standing_data.list[index].position.toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        //Expanded(child: Image.network(standing_data.list[index].team!.crestUrl!)),
-                        Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              standing_data.list[index].team!.name!,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Opacity(
-                              opacity: 0.3,
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 6,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
                               child: Text(
-                                standing_data.list[index].playedGames.toString(),
+                                standing_data.list[index].position.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Opacity(
-                              opacity: 0.3,
+                          Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white,),
+                              padding: EdgeInsets.all(10),
+                              height: MediaQuery.of(context).size.height / 12,
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: SvgPicture.network(
+                                  standing_data.list[index].team!.crestUrl!)),
+                          SizedBox(width: 6,),
+                          Expanded(
+                            flex: 4,
+                            child: Container(
                               child: Text(
-                                standing_data.list[index].won.toString(),
+                                standing_data.list[index].team!.name!,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Opacity(
-                              opacity: 0.3,
+                          Expanded(
+                            child: Container(
+                              child: Opacity(
+                                opacity: 0.3,
+                                child: Text(
+                                  standing_data.list[index].playedGames
+                                      .toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Opacity(
+                                opacity: 0.3,
+                                child: Text(
+                                  standing_data.list[index].won.toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Opacity(
+                                opacity: 0.3,
+                                child: Text(
+                                  standing_data.list[index].draw.toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Opacity(
+                                opacity: 0.3,
+                                child: Text(
+                                  standing_data.list[index].lost.toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Opacity(
+                                opacity: 0.3,
+                                child: Text(
+                                  standing_data.list[index].goalDifference
+                                      .toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
                               child: Text(
-                                standing_data.list[index].draw.toString(),
+                                standing_data.list[index].points.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Opacity(
-                              opacity: 0.3,
-                              child: Text(
-                                standing_data.list[index].lost.toString(),
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Opacity(
-                              opacity: 0.3,
-                              child: Text(
-                                standing_data.list[index].goalDifference.toString(),
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: Text(
-                              standing_data.list[index].points.toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      color: Colors.grey,
-                    ),
-                  ],
+                        ],
+                      ),
+                      Divider(
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

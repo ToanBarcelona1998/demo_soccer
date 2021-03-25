@@ -14,10 +14,10 @@ class StandingNotifier extends ChangeNotifier{
 
   fetchDataStanding(String code) async {
     try{
-      List<StandingModel> list1=[];
+      //List<StandingModel> list1=[];
       StandingService service=StandingService();
-      list1=await service.getStanding(code);
-      result=ResultSucces<List<StandingModel>>()..data=list1;
+      list=await service.getStanding(code);
+      //result=ResultSucces<List<StandingModel>>()..data=list1;
     }on ResultFailCode400 catch(message){
       result=ResultFailCode404();
     }on ResultFailCode403 catch(message){
