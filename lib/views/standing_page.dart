@@ -16,44 +16,8 @@ class StandingTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [Color(0xfff0ebe8), Color(0xffeaeaec)],
-      )),
-      padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top,
-          left: 8,
-          right: 8,
-          bottom: 75),
-      height: double.maxFinite,
-      width: double.maxFinite,
       child: Column(
         children: [
-          Container(
-            child: Stack(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.keyboard_backspace_sharp),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  width: double.infinity,
-                  child: Text(
-                    "Standing",
-                    style: TextStyle(fontSize: 22, fontFamily: "Chango"),
-                  ),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
           Row(
             children: [
               Expanded(

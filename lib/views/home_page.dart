@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:soccer_app/models/enitys/model_tournament.dart';
+import 'package:soccer_app/providers/providers.dart';
 import 'package:soccer_app/providers/standing_notifier.dart';
 import 'package:soccer_app/views/second_page.dart';
 class HomePage extends StatefulWidget {
@@ -82,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) => InkWell(
                     onTap: (){
                       String code=_list[index].code!;
+                      //context.refresh(standing_notifier);
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondPage(code: code,)));
                     },
                     borderRadius: BorderRadius.circular(15),

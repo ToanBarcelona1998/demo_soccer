@@ -7,5 +7,4 @@ final select_page=StateNotifierProvider<PageNotifier>((ref)=>PageNotifier());
 
 final soccer_notifer = ChangeNotifierProvider<SoccerNotifier>((ref) => SoccerNotifier());
 
-final standing_notifier =
-ChangeNotifierProvider<StandingNotifier>((ref) => StandingNotifier());
+final standing_notifier = ChangeNotifierProvider<StandingNotifier>((ref) => StandingNotifier());
