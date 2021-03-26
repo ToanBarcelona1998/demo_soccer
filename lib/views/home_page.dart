@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) => InkWell(
                     onTap: (){
                       String code=_list[index].code!;
-                      //context.refresh(standing_notifier);
+                      context.refresh(standing_notifier);
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondPage(code: code,)));
                     },
                     borderRadius: BorderRadius.circular(15),
