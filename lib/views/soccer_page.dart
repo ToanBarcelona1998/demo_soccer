@@ -71,69 +71,74 @@ class TableSoccer extends ConsumerWidget {
           itemCount: list.length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(top: 12, bottom: 12),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        child: Text(
-                          list[index].player!.name.toString(),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        child: Opacity(
-                          opacity: 0.5,
+            child: Container(
+              height: MediaQuery.of(context).size.height / 6,
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Container(
                           child: Text(
-                            list[index].player!.dateOfBirth.toString(),
+                            list[index].player!.name.toString(),
                             overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: Opacity(
-                          opacity: 0.3,
-                          child: Text(
-                            list[index].player!.position.toString(),
-                            overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          child: Opacity(
+                            opacity: 0.5,
+                            child: Text(
+                              list[index].player!.dateOfBirth.toString(),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: Opacity(
-                          opacity: 0.3,
-                          child: Text(
-                            list[index].team!.name.toString(),
-                            overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        child: Container(
+                          child: Opacity(
+                            opacity: 0.3,
+                            child: Text(
+                              list[index].player!.position.toString(),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: Text(
-                          list[index].numberOfGoals.toString(),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Container(
+                          child: Opacity(
+                            opacity: 0.3,
+                            child: Text(
+                              list[index].team!.name.toString(),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Divider(
-                  color: Colors.grey,
-                )
-              ],
+                      Expanded(
+                        child: Container(
+                          child: Text(
+                            list[index].numberOfGoals.toString(),
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    color: Colors.grey,
+                  )
+                ],
+              ),
             ),
           ),
         ),

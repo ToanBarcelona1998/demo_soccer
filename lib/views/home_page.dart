@@ -84,6 +84,8 @@ class _HomePageState extends State<HomePage> {
                     onTap: (){
                       String code=_list[index].code!;
                       context.refresh(standing_notifier);
+                      context.refresh(select_page);
+                      context.refresh(soccer_notifer);
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondPage(code: code,)));
                     },
                     borderRadius: BorderRadius.circular(15),

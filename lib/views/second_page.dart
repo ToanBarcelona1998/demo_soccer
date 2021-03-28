@@ -48,8 +48,6 @@ class SecondPage extends ConsumerWidget{
                       InkWell(
                         onTap: () {
                           Navigator.pop(context);
-                          context.refresh(select_page);
-                          context.refresh(soccer_notifer);
                         },
                         child: Icon(Icons.keyboard_backspace_sharp),
                       ),

@@ -122,115 +122,110 @@ class TableStanding extends ConsumerWidget {
           itemCount: list.length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(top: 12, bottom: 12),
-            child: Container(
-              height: MediaQuery.of(context).size.height / 6,
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        child: Text(
+                          list[index].position.toString(),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.white,),
+                        padding: EdgeInsets.all(10),
+                        height: MediaQuery.of(context).size.height / 12,
+                        width: MediaQuery.of(context).size.width / 7,
+                        child: SvgPicture.network(
+                            list[index].team!.crestUrl!)),
+                    SizedBox(width: 6,),
+                    Expanded(
+                      flex: 4,
+                      child: Container(
+                        child: Text(
+                          list[index].team!.name!,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Opacity(
+                          opacity: 0.3,
                           child: Text(
-                            list[index].position.toString(),
+                            list[index].playedGames
+                                .toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                      Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.white,),
-                          padding: EdgeInsets.all(10),
-                          height: MediaQuery.of(context).size.height / 12,
-                          width: MediaQuery.of(context).size.width / 7,
-                          child: SvgPicture.network(
-                              list[index].team!.crestUrl!)),
-                      SizedBox(width: 6,),
-                      Expanded(
-                        flex: 4,
-                        child: Container(
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Opacity(
+                          opacity: 0.3,
                           child: Text(
-                            list[index].team!.name!,
-                            overflow: TextOverflow.ellipsis,
+                            list[index].won.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: Text(
-                              list[index].playedGames
-                                  .toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: Text(
-                              list[index].won.toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: Text(
-                              list[index].draw.toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: Text(
-                              list[index].lost.toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: Text(
-                              list[index].goalDifference
-                                  .toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Opacity(
+                          opacity: 0.3,
                           child: Text(
-                            list[index].points.toString(),
+                            list[index].draw.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Opacity(
+                          opacity: 0.3,
+                          child: Text(
+                            list[index].lost.toString(),
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Opacity(
+                          opacity: 0.3,
+                          child: Text(
+                            list[index].goalDifference
+                                .toString(),
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        child: Text(
+                          list[index].points.toString(),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: Colors.grey,
+                ),
+              ],
             ),
           ),
         ),
