@@ -8,8 +8,8 @@ part of 'model_team_soccer.dart';
 
 TeamSoccerModel _$TeamSoccerModelFromJson(Map<String, dynamic> json) {
   return TeamSoccerModel()
-    ..id = json['id'] as int?
-    ..name = json['name'] as String?;
+    ..id = json['id'] as int
+    ..name = json['name'] as String;
 }
 
 Map<String, dynamic> _$TeamSoccerModelToJson(TeamSoccerModel instance) =>

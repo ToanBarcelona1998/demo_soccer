@@ -83,7 +83,7 @@ class TableSoccer extends ConsumerWidget {
                         flex: 4,
                         child: Container(
                           child: Text(
-                            list[index].player!.name.toString(),
+                            list[index].player.name.toString(),
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -95,7 +95,7 @@ class TableSoccer extends ConsumerWidget {
                           child: Opacity(
                             opacity: 0.5,
                             child: Text(
-                              list[index].player!.dateOfBirth.toString(),
+                              list[index].player.dateOfBirth.toString(),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -106,7 +106,7 @@ class TableSoccer extends ConsumerWidget {
                           child: Opacity(
                             opacity: 0.3,
                             child: Text(
-                              list[index].player!.position.toString(),
+                              list[index].player.position.toString(),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -117,7 +117,7 @@ class TableSoccer extends ConsumerWidget {
                           child: Opacity(
                             opacity: 0.3,
                             child: Text(
-                              list[index].team!.name.toString(),
+                              list[index].team.name.toString(),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),

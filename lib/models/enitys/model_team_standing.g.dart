@@ -8,9 +8,9 @@ part of 'model_team_standing.dart';
 
 TeamStandingModel _$TeamStandingModelFromJson(Map<String, dynamic> json) {
   return TeamStandingModel()
-    ..id = json['id'] as int?
-    ..name = json['name'] as String?
-    ..crestUrl = json['crestUrl'] as String?;
+    ..id = json['id'] as int
+    ..name = json['name'] as String
+    ..crestUrl = json['crestUrl'] as String;
 }
 
 Map<String, dynamic> _$TeamStandingModelToJson(TeamStandingModel instance) =>

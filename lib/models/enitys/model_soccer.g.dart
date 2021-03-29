@@ -11,7 +11,7 @@ SoccerModel _$SoccerModelFromJson(Map<String, dynamic> json) {
     ..player = json['player'] == null
         ? null
         : PlayerModel.fromJson(json['player'] as Map<String, dynamic>)
-    ..numberOfGoals = json['numberOfGoals'] as int?
+    ..numberOfGoals = json['numberOfGoals'] as int
     ..team = json['team'] == null
         ? null
         : TeamSoccerModel.fromJson(json['team'] as Map<String, dynamic>);

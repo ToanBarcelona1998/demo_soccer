@@ -11,13 +11,13 @@ import 'package:soccer_app/public/shared/result_fail_code_404.dart';
 import 'package:soccer_app/public/shared/result_fail_code_429.dart';
 
 class StandingService{
-  BaseApi ?_baseApi;
+  BaseApi _baseApi;
 
   Future<dynamic> getStanding(String code)async{
     List<StandingModel> list=[];
     _baseApi=StandingApi(code: code);
     try{
-      http.Response response=await _baseApi!.getResponse();
+      http.Response response=await _baseApi.getResponse();
       var stCode=response.statusCode;
       if(stCode==200){
           Map map=jsonDecode(response.body);

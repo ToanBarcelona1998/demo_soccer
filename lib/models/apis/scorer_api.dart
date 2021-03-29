@@ -1,7 +1,7 @@
 import 'package:soccer_app/models/apis/base_api.dart';
 
 class SoccerApi extends BaseApi{
-  String ?code;
+  String code;
   SoccerApi({this.code});
   @override
   action() {

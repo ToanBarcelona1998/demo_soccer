@@ -10,7 +10,7 @@ import 'package:soccer_app/public/shared/result_fail_code_429.dart';
 import 'package:soccer_app/public/shared/result_succes.dart';
 
 class SoccerNotifier extends ChangeNotifier {
-  Result? result;
+  Result result;
   List<SoccerModel> list = [];
 
   getSoccerNotifier(code) async {

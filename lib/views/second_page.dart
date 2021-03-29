@@ -7,12 +7,12 @@ import 'package:soccer_app/views/standing_page.dart';
 
 
 class SecondPage extends ConsumerWidget{
-  String ?code;
+  String code;
   SecondPage({this.code});
   final _pageOptions=[StandingTab(),SoccerTab()];
   @override
   Widget build(BuildContext context, watch) {
-    context.read(standing_notifier).fetchDataStanding(code!);
+    context.read(standing_notifier).fetchDataStanding(code);
     var page=watch(select_page.state);
       return Scaffold(
           extendBody: true,
@@ -23,7 +23,7 @@ class SecondPage extends ConsumerWidget{
             ],
             onTap: (index){
               context.read(select_page).changePage(index);
-              context.read(soccer_notifer).getSoccerNotifier(code!);
+              context.read(soccer_notifer).getSoccerNotifier(code);
             },
           ),
           body: Container(

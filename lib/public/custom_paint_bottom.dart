@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NavCustomPainter extends CustomPainter {
-  late double loc;
-  late double s;
+  double loc;
+  double s;
   Color color;
   TextDirection textDirection;
 

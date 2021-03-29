@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisSpacing: 10),
                   itemBuilder: (context, index) => InkWell(
                     onTap: (){
-                      String code=_list[index].code!;
+                      String code=_list[index].code;
                       context.refresh(standing_notifier);
                       context.refresh(select_page);
                       context.refresh(soccer_notifer);
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                         BorderRadius.circular(15),
                         color: Color(0xffe6f0fa),
                       ),
-                      child: Image.asset(_list[index].image!.trim(),height: 60),
+                      child: Image.asset(_list[index].image.trim(),height: 60),
                     ),
                   ),
                 ),

@@ -5,9 +5,9 @@ part 'model_soccer.g.dart';
 
 @JsonSerializable()
 class SoccerModel{
-  PlayerModel ?player;
-  int? numberOfGoals;
-  TeamSoccerModel ?team;
+  PlayerModel player;
+  int numberOfGoals;
+  TeamSoccerModel team;
 
   SoccerModel();
   factory SoccerModel.fromJson(Map<String,dynamic> map)=>_$SoccerModelFromJson(map);

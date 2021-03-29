@@ -143,13 +143,13 @@ class TableStanding extends ConsumerWidget {
                         height: MediaQuery.of(context).size.height / 12,
                         width: MediaQuery.of(context).size.width / 7,
                         child: SvgPicture.network(
-                            list[index].team!.crestUrl!)),
+                            list[index].team.crestUrl)),
                     SizedBox(width: 6,),
                     Expanded(
                       flex: 4,
                       child: Container(
                         child: Text(
-                          list[index].team!.name!,
+                          list[index].team.name,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),

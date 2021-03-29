@@ -8,11 +8,11 @@ part of 'model_player.dart';
 
 PlayerModel _$PlayerModelFromJson(Map<String, dynamic> json) {
   return PlayerModel()
-    ..id = json['id'] as int?
-    ..name = json['name'] as String?
-    ..dateOfBirth = json['dateOfBirth'] as String?
-    ..nationality = json['nationality'] as String?
-    ..position = json['position'] as String?;
+    ..id = json['id'] as int
+    ..name = json['name'] as String
+    ..dateOfBirth = json['dateOfBirth'] as String
+    ..nationality = json['nationality'] as String
+    ..position = json['position'] as String;
 }
 
 Map<String, dynamic> _$PlayerModelToJson(PlayerModel instance) =>

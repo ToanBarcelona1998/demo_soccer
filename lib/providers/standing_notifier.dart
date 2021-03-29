@@ -11,7 +11,7 @@ import 'package:soccer_app/public/shared/result_succes.dart';
 
 class StandingNotifier extends ChangeNotifier{
   List<StandingModel> list1=[];
-  Result ?result;
+  Result result;
 
   fetchDataStanding(String code) async {
     try{

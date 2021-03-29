@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'custom_paint_bottom.dart';
 import 'custom_nav_button.dart';
@@ -17,14 +19,14 @@ class CurvedNavigationBar extends StatefulWidget {
   final double height;
 
   CurvedNavigationBar({
-    Key ?key,
-    required this.items,
+    Key key,
+    this.items,
     this.index = 0,
     this.color = const Color(0xff98a6c2),
     this.buttonBackgroundColor=Colors.white,
     this.backgroundColor = Colors.transparent,
-    required this.onTap,
-    _LetIndexPage ?letIndexChange,
+    this.onTap,
+    _LetIndexPage letIndexChange,
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
     this.height = 75.0,
@@ -41,13 +43,13 @@ class CurvedNavigationBar extends StatefulWidget {
 
 class CurvedNavigationBarState extends State<CurvedNavigationBar>
     with SingleTickerProviderStateMixin {
-  late double _startingPos;
+  double _startingPos;
   int _endingIndex = 0;
-  late double _pos;
+  double _pos;
   double _buttonHide = 0;
-  late Widget _icon;
-  late AnimationController _animationController;
-  late int _length;
+  Widget _icon;
+  AnimationController _animationController;
+  int _length;
 
   @override
   void initState() {

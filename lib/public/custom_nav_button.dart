@@ -7,7 +7,7 @@ class NavButton extends StatelessWidget {
   final ValueChanged<int> onTap;
   final Widget child;
 
-  NavButton({required this.onTap, required this.position, required this.length, required this.index, required this.child});
+  NavButton({this.onTap, this.position, this.length, this.index, this.child});
 
   @override
   Widget build(BuildContext context) {

@@ -11,12 +11,12 @@ import 'package:soccer_app/public/shared/result_fail_code_404.dart';
 import 'package:soccer_app/public/shared/result_fail_code_429.dart';
 
 class SoccerService{
-  BaseApi ?_baseApi;
+  BaseApi _baseApi;
   Future<dynamic> getSoccer(String code)async{
     List<SoccerModel> _listSoccer=[];
     _baseApi=SoccerApi(code: code);
     try{
-      http.Response response=await _baseApi!.getResponse();
+      http.Response response=await _baseApi.getResponse();
       var stCode=response.statusCode;
       if(stCode==200){
         Map map=jsonDecode(response.body);
